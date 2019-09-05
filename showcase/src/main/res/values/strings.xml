@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hope Design Showcase</string>
+
+    <string name="new_text_fragment">State was changed</string>
+</resources>

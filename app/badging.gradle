@@ -1,0 +1,21 @@
+import java.nio.channels.Channels
+
+task doBadging {
+    doLast {
+        def versionUrl = "https://img.shields.io/badge/version-$app_version%20(vc%20$app_version_code)-orange"
+        def badgeFileName = "$buildDir/outputs/versionBadge.svg"
+        def conn = new URL(versionUrl).openConnection()
+        conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
+        conn.setDoInput(true)
+        conn.connect()
+        def readChannel = Channels.newChannel(conn.getInputStream())
+        def fos = new FileOutputStream(badgeFileName)
+        fos.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE)
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleDebug') {
+        task.dependsOn 'doBadging'
+    }
+}

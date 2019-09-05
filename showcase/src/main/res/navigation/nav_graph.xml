@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/testFragment">
+
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.softvision.hope.showcase.ui.test.TestShowcaseFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_showcase_test" >
+        <action
+            android:id="@+id/action_testFragment_to_newTestFragment"
+            app:destination="@id/newTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newTestFragment"
+        android:name="com.softvision.hope.showcase.ui.test2.NewTestFragment"
+        android:label="fragment_new_test"
+        tools:layout="@layout/fragment_new_test" />
+</navigation>

@@ -1,0 +1,2 @@
+include ':app', ':design', ':base', ':showcase'
+rootProject.name='Hope'
